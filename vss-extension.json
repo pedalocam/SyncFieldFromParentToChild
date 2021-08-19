@@ -1,0 +1,74 @@
+{
+  "manifestVersion": 1,
+  "version": "1.0.0",
+  "name": "Sync field from parent to children",
+  "description": "This is extension allows you to copy work item parent fields to children",
+  "publisher": "CAMPET",
+  "categories": ["Azure Boards"],
+  "tags": [
+    "Copy",
+    "Work Item",
+    "Parent",
+    "Tags",
+    "Area",
+    "Iteration"
+  ],
+  "repository": {
+    "type": "git",
+    "uri": ""
+  },
+  "scopes": ["vso.work", "vso.work_write", "vso.work_full"],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "README.md"
+    }
+  },
+  "icons": {
+    "default": "img/icon.png"
+  },
+  "files": [
+    {
+      "path": "dist",
+      "addressable": true
+    },
+    {
+      "path": "img",
+      "addressable": true
+    },
+    {
+      "path": "node_modules/vss-web-extension-sdk/lib",
+      "addressable": true,
+      "packagePath": "lib"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "copy-parent-to-hub-group",
+      "type": "ms.vss-web.hub",
+      "description": "Hub group in which is possible to update extension settings.",
+      "targets": ["ms.vss-work-web.work-hub-group"],
+      "properties": {
+        "name": "Copy Parent",
+        "uri": "dist/hub/hub.html",
+        "icon": {
+          "dark": "img/icon.png",
+          "light": "img/icon.png"
+        }
+      }
+    },
+    {
+      "id": "copy-parent--work-item-form-observer",
+      "type": "ms.vss-work-web.work-item-notifications",
+      "description": "Gets events about the current work item.",
+      "targets": ["ms.vss-work-web.work-item-form"],
+      "properties": {
+        "uri": "dist/observer/observer.html"
+      }
+    }
+  ]
+}
